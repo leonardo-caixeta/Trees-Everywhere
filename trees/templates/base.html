@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Trees Everywhere{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- <li><a href="{% url 'login' %}">Login</a></li> -->
+                <li><a href="{% url 'user_trees' %}">Your Trees</a></li>
+                <li><a href="{% url 'plant_tree' %}">Plant Tree</a></li>
+                <li><a href="{% url 'add_tree' %}">Add Tree</a></li>
+                <li><a href="{% url 'account_trees' %}">Account Trees</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Trees Everywhere</p>
+    </footer>
+</body>
+</html>

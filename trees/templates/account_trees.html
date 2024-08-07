@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Account Trees{% endblock %}
+
+{% block content %}
+  <h2>Trees Planted by Your Accounts</h2>
+  <ul>
+    {% for tree in planted_trees %}
+      <li>{{ tree.tree.name }} (Planted by {{ tree.user.username }})</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

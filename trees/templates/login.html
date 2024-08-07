@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Trees Everywhere</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <main>
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        {% if form.errors %}
+            <p style="color: red;">Invalid login credentials. Please try again.</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Trees Everywhere</p>
+    </footer>
+</body>
+</html>

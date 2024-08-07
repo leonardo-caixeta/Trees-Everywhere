@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Your Planted Trees{% endblock %}
+
+{% block content %}
+  <h2>Your Planted Trees</h2>
+  <ul>
+    {% for planted_tree in planted_trees %}
+      <li><a href="{% url 'tree_detail' planted_tree.pk %}">{{ planted_tree.tree.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

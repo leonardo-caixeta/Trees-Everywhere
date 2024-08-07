@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Tree Detail{% endblock %}
+
+{% block content %}
+  <h2>{{ planted_tree.tree.name }}</h2>
+  <p>Planted by: {{ planted_tree.user.username }}</p>
+  <p>Location: {{ planted_tree.latitude }}, {{ planted_tree.longitude }}</p>
+  <p>Planted at: {{ planted_tree.planted_at }}</p>
+{% endblock %}
