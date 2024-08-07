@@ -24,16 +24,19 @@ class User(AbstractUser):
         for tree, coords in trees:
             self.plant_tree(tree, coords[0], coords[1])
 
-    def plant_tree(self, tree, latitude, longitude):
+    def plant_tree(self, tree, latitude, longitude, account):
         planted_tree = PlantedTree(
             user=self,
             tree=tree,
             latitude=Decimal(latitude),
             longitude=Decimal(longitude),
-            account=self.accounts.first(),  # Atribui a primeira conta do usuário # NOQA
+            account=account,  # Atribui a primeira conta do usuário # NOQA
         )
 
         planted_tree.save()
+
+    def __str__(self):
+        return self.username
 
 
 class Profile(models.Model):
