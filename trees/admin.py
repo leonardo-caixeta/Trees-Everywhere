@@ -15,7 +15,7 @@ class UserAdmin(BaseUserAdmin):
                 "fields": (
                     "username",
                     "password",
-                    "account",
+                    "accounts",
                 ),
             },
         ),

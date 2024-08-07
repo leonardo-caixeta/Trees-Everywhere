@@ -1,6 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
-from .models import PlantedTree, Account, Tree
+from .models import PlantedTree, Account, Tree, User
 
 
 class PlantedTreeForm(forms.ModelForm):
@@ -27,13 +26,13 @@ class TreeForm(forms.ModelForm):
 class UserCreationFormWithAccount(forms.ModelForm):
     # Formulário para criar um novo usuário com vinculação a uma conta
     password = forms.CharField(widget=forms.PasswordInput)
-    account = forms.ModelChoiceField(
+    accounts = forms.ModelMultipleChoiceField(
         queryset=Account.objects.all(), required=True
     )
 
     class Meta:
         model = User
-        fields = ["username", "password", "account"]
+        fields = ["username", "password", "accounts"]
 
     def save(self, commit=True):
         # Define a senha do usuário e o vincula a uma conta
@@ -41,5 +40,5 @@ class UserCreationFormWithAccount(forms.ModelForm):
         user.set_password(self.cleaned_data["password"])
         if commit:
             user.save()
-            user.accounts.add(self.cleaned_data["account"])
+            user.accounts.add(self.cleaned_data["accounts"])
         return user
